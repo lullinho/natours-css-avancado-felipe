@@ -1,0 +1,42 @@
+.composition{
+    position: relative;// a referencia de coordenada (0,0) será no canto esquerdo superior do relative, que é esse aqui, .compostition
+    &__photo{
+        width: 55%;//sempre definir width de imagens em %
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        /*colocar elemento em cima do outro*/
+        position: absolute;//quando setamos absolute em um elemento, ele vão ser colocados de acordo com uma referência, a refereência é o primeiro pai que encontra. (Apenas com esse código as imagens já ficam uma em cima da outra)
+
+        z-index: 1;//colocando um índice padrão para todas imagens
+
+        transition: all .2s;//transição/animação para todas as propriedades em 2 segundos(isso aqui faz muita diferença na animação)
+        outline-offset: 1.5rem; //isso permite colocar um espaço entre a borda/contorno
+
+        //definindo as posições das 3 imagens
+        &--p1{
+            left: 0;
+            top: -2rem;
+        }
+        &--p2{
+            right: 0;//vai começar pelo lado direito, movendo zero pelo lado direito do container.
+            top: 2rem;
+        }
+        &--p3{
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover{
+            outline: 1.5rem solid $color-primary;//outline é praticamente igual ao border mas ele permite algo a mais, o outline-offset (está definido no &__photo para todas fotos)
+            transform: scale(1.10) translateY(-3rem);//dar um zoom e depois subir um pouco pra cima
+            box-shadow: 0 5rem 4rem rgba($color-black, .5);//aumentar sombra
+            z-index: 2;//índice maior que o padrão definido para todas as fotos, então quando tiver um hover move pra frente o indice maior
+        }
+
+    }
+    //composition:hover composition__photo:not(:hover)
+    //qunado selecionarmos a composition inteira, selecionamos a composition__photo que não é hoverd, ou seja é selecionado as fotos que não estão sendo mostradas na frente
+    &:hover &__photo:not(:hover){
+        transform: scale(.98);
+    }
+}

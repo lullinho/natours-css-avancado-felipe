@@ -1,0 +1,14 @@
+       // a 1ª row fica com height: 0 porque todos os elementos filho da row estão flutuando,float entao a altura entra em colapso e se torna zero, para resolver usar o clearfix hack
+       //1ª row no arquivo _grid.scss 
+
+       //tem que sempre usar um clearfix quando usa float design
+       @mixin clearfix{//vamos colocar esse clearfix na row
+           //anexar um pseudoelemento após o elemento que irá limpar esses floats
+            &::after{
+                content: "";//colocar um conteúdo vazio no pseudoelemento se nao ele nao vai aparecer
+                display: table; //versão padrão do clearfix
+                clear: both; // o que faz o clearfix both float, tanto float left como float right
+            }
+
+
+       }

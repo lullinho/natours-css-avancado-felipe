@@ -1,0 +1,63 @@
+
+/*Como criar animações, colocar @keyframes e nome da animação que quer, agora é só adicionar essa animação abaixo na classe css que você quer, e como faz isso? precisa adicionar somente duas coisas(nome da animação e duração da animação) mas voce pode adicionar muito mais coisas
+animation-name: moveInLeft;
+animation-duration: 6s;
+*/
+@keyframes moveInLeft{
+    /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+    /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+    0%{
+        opacity: 0;
+        transform: translateX(-10rem);/*animar no X( deitado, 0 é no centro, então -100 é tudo na esquerda)*/
+    }
+
+    80%{
+        transform: translateX(1rem);
+    }
+    /*no final, queremos que o elemento volte ao normal*/
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight{
+    /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+    /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+    0%{
+        opacity: 0;
+        transform: translateX(10rem) rotate(120deg);/*animar no X( deitado, 0 é no centro, então -100 é tudo na esquerda)*/
+
+    }
+
+    50{
+        transform: rotate(128deg);
+    }
+
+    80%{
+        transform: translateX(-1rem);
+    }
+    /*no final, queremos que o elemento volte ao normal*/
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*animação para o mover o botão lá de baixo para cima*/
+@keyframes moveInBottom{
+    /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+    /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+    0%{
+        opacity: 0;
+        /*Y vem cima pra baixo, entao se queremos mover pra baixo precisa ser valor positivo*/
+        transform: translateY(5rem);
+
+    }
+   
+    /*no final, queremos que o elemento volte ao normal*/
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

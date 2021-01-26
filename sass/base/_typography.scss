@@ -1,0 +1,88 @@
+
+/*código de typography do body, tem mais código no base/_base.scss do body*/
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /*font-size: 16px;*/
+    line-height: 1.7;
+    color:$color-gray-dark;
+   /* padding: 30px;*/
+    padding: 3rem;
+}
+
+
+
+/*o h1*/
+.heading-primary{
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 6rem;/*não é mais 60px;*/ 
+    /*span do h1 principal*/
+
+    &--main{
+
+        /*colocar um elemento abaixo do outro*/
+        display: block; /*usar o inspect chrome, vc vai ver que o elemento cobre a linha inteira, fica 100%width, block element ocupa todo o width e cria quebra de linha antes e depois do elemento*/
+
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+        /*animation-timing-function: ease-out; ease-out(começa normal e fica lento no final) | ease-in(devagar no começo e depois acelera)*/
+        animation-iteration-count: 3;/*a animação vai acontecer 3x seguidas*/
+        animation-delay: 1s;/*antes da animação começar, espera 3s*/
+
+    }
+
+    /*span do h1 principal (editar ele como h2)*/
+    &--sub{
+
+        /*colocar um elemento abaixo do outro*/
+        display: block;/*usar o inspect chrome, vc vai ver que o elemento cobre a linha inteira, fica 100%width, block element ocupa todo o width cria quebra de linha antes e depois do elemento*/
+
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.74rem; /*não é mais 17.4px*/
+        animation: moveInRight 1s ease-out;
+
+    }
+
+}
+
+.heading-secondary{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    //colocando o fundo no texto, o fundo fica até o fim da tela, queremos que o elemento não ocupe 100% da largura, agora ele é um block-element por isso ocupa 100%
+    display: inline-block; // isso resolve o problema, agora o fundo só cobre o texto;
+    -webkit-background-clip: text;//para ter o efeito gradiente atrás do texto, o plano de fundo é cortado exatamente onde o texto está , vai cortar(clip) o fundo para onde o texto está
+    //sem esse codigo abaixo, voce ve o texto que fica acima do clip background 
+    color: transparent; //nós queremos ver o background-image e nao o texto, agora temos a background-image apenas onde o texto esta e acima disso temos o texto, entao colocamos o texto transparente para ver o background-image
+    letter-spacing: 2px;
+    transition: all .4s;
+   
+
+    &:hover{//inclinação, efeito de inclinação
+        transform: skewY(10deg) ; //pode inclinar para cima e lados
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+
+
+}
+
+.heading-tertiary{
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.paragraph{
+    font-size: $default-font-size;
+
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+}

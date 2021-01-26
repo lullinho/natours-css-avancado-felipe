@@ -1,0 +1,33 @@
+.section-about{
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -20vh; //para mover o fundo para cima por causa da edição poligono da imagem fica um espaço em branco em cima, como foi calculado? olhar o arquivo _header.css, o height do header é 95vh  e do polygon é 75vh então subtraindo os dois -20vh
+
+
+}
+
+.section-features{
+    padding: 20rem 0;
+     /*linear gradiente, pode especificar a posicao onde começa e termina(to right bottom, começa no topo esqerd e vai ate embaixo, tipo diagonal)*/
+     background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), //so no sass que funciona assim, colocando variavel e opacidade
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/nat-4.jpg);
+        background-size: cover;
+
+        transform: skewY(-7deg);//inclinar tudo, inclusive o fundo, traz aquele efeito poligono
+
+        margin-top:-10rem;//move tudo para cima para cobrir o espaço em branco que ficou do efeito poligono
+
+        & > *{//selecionando todos filhos diretos do seaction-feature (.section-features > *{}) (único filho direto do section-features é o .row)
+            transform: skewY(7deg);
+        }
+
+}
+
+.section-tours{
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 50rem 0;
+    margin-top: -10rem; //move para cima, para cobrir a parte branca que fica aparecendo por causa do poligono
+}

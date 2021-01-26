@@ -1,0 +1,463 @@
+@charset "UTF-8";
+/*margin-bottom entre as linhas*/
+/*Como criar animações, colocar @keyframes e nome da animação que quer, agora é só adicionar essa animação abaixo na classe css que você quer, e como faz isso? precisa adicionar somente duas coisas(nome da animação e duração da animação) mas voce pode adicionar muito mais coisas
+animation-name: moveInLeft;
+animation-duration: 6s;
+*/
+@keyframes moveInLeft {
+  /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+  /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+    /*animar no X( deitado, 0 é no centro, então -100 é tudo na esquerda)*/ }
+  80% {
+    transform: translateX(1rem); }
+  /*no final, queremos que o elemento volte ao normal*/
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+  /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+  0% {
+    opacity: 0;
+    transform: translateX(10rem) rotate(120deg);
+    /*animar no X( deitado, 0 é no centro, então -100 é tudo na esquerda)*/ }
+  50 {
+    transform: rotate(128deg); }
+  80% {
+    transform: translateX(-1rem); }
+  /*no final, queremos que o elemento volte ao normal*/
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+/*animação para o mover o botão lá de baixo para cima*/
+@keyframes moveInBottom {
+  /*porcentagens das animações, algo que você quer que aconteça no começo, meio, fim, etc*/
+  /*no começo da animação queremos que o elemento fique oculto e que esteja na esquerda, venha pela esquerda*/
+  0% {
+    opacity: 0;
+    /*Y vem cima pra baixo, entao se queremos mover pra baixo precisa ser valor positivo*/
+    transform: translateY(5rem); }
+  /*no final, queremos que o elemento volte ao normal*/
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /*usar o código abaixo para forçar uma herença, sempre que podemos, devemos usar a herença em vez de usar o seletor universal a propriedade box-sizing por si só não é herdada não é inherit definimos a propriedade de box-sizing(caixa) em cada elemento para inherit, para ser herdada, ao fazer isso ela herda tudo que for colocado ali no border-box do body, ´[e uma boa prática pois torna mais fácil mudar tamanho do box-sizing , a caixa como em plugins o outro componentes onde podemos querer usar propriedade diferente para o dimensionamento da caixa*/
+  box-sizing: inherit; }
+
+/*root font-size, definir o root para poder definir os rem
+estamos definindo uma global font-size , é uma boa técnica, 
+A UNIDADE 'REM' está sempre em relação ao tamanho da font-size raiz(root), então se mudarmos a font-size do html, podemos mudar todas as outras unidades pra rem, assim tudo é alterado alterando somente o font-size do html, cool.
+*/
+html {
+  font-size: 62.5%;
+  /*por que 10px? pra tornar nossa vida mais fácil porque agora sabemos que 1 rem = 10px;  agora basta dividir todos pixels por 10 e temos nosso rem.
+    */
+  /*o certo é não ter nada em px, então trocamos o 10px; para 66¨%;
+    quando colocamos pixel substituimos a configuração do tamanho da fonte do navegador que o usuário muda manulamente nas config do browser, (alguns tem problema de visao e aumentam a letra) ao usarmos pixel o usuario faz a mudança e não tem efeito. 
+    O tamanho padrão do navegador é 16px; então vamos usar % para definir o valor para 10px;
+    então 10/16 = 0.625
+    */ }
+
+body {
+  /*tirou o border-box do *{} e colocou no body */
+  box-sizing: border-box;
+  /*as bordas e os paddings nao sejam mais adicionados a largura total ou altura total especifica para a caixa. Sem isso, quaisquer preenchimentos(paddings) e bordas(border) são adicionados a altura/largura de um elemento, o que não é útil; 
+    https://www.maujor.com/tutorial/propriedade-css-box-sizing.php#:~:text=As%20CSS3%20criaram%20a%20propriedade,box%20criado%20pelo%20elemento%20HTML.
+    */ }
+
+/*código de typography do body, tem mais código no base/_base.scss do body*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  /* padding: 30px;*/
+  padding: 3rem; }
+
+/*o h1*/
+.heading-primary {
+  color: white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  /*não é mais 60px;*/
+  /*span do h1 principal*/
+  /*span do h1 principal (editar ele como h2)*/ }
+  .heading-primary--main {
+    /*colocar um elemento abaixo do outro*/
+    display: block;
+    /*usar o inspect chrome, vc vai ver que o elemento cobre a linha inteira, fica 100%width, block element ocupa todo o width e cria quebra de linha antes e depois do elemento*/
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    /*animation-timing-function: ease-out; ease-out(começa normal e fica lento no final) | ease-in(devagar no começo e depois acelera)*/
+    animation-iteration-count: 3;
+    /*a animação vai acontecer 3x seguidas*/
+    animation-delay: 1s;
+    /*antes da animação começar, espera 3s*/ }
+  .heading-primary--sub {
+    /*colocar um elemento abaixo do outro*/
+    display: block;
+    /*usar o inspect chrome, vc vai ver que o elemento cobre a linha inteira, fica 100%width, block element ocupa todo o width cria quebra de linha antes e depois do elemento*/
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    /*não é mais 17.4px*/
+    animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #55c57a, #28b485);
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .4s; }
+  .heading-secondary:hover {
+    transform: skewY(10deg);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+/*nome do conceito é utilities classes, são classes css que tem um objetivo básico só, tipo, centralizar tudo*/
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1rem; }
+
+.btn {
+  /*pseudo-classe, pseudo-classe do link, (pseudo-classes são estados especiais de um selector), o link é um estado do seletor de botão*/
+  /*quando é um elemento ancor/link
+    visited: quando usuário já clicou no botão antes e o vê novamente, queremos que o visited state fique igual ao estado normal de link , nao queremos que ao clicar e ver botao novamente tenha cor diferente cinza sla
+    1º */
+  /*2º hover*/
+  /*3º quando é clicado*/
+  /*pseudo elemento, o truque é adicionar um botão que se parece exatamente com o botão que já temos mas o colocamos atrás do botão e quando ficamos fora do hover esse pseudo elemento fica oculto volta para tras do botao Em CSS, ::after cria um pseudo-elemento que é o último filho do elemento selecionado. Muitas vezes é usado para adicionar e melhorar o conteúdo de um elemento como a propriedade content . É inline por padrão.*/
+  /*pseudo elements permite estilizar algumas partes dos elementos, after adiciona um elemento virutal após o elemento*/
+  /*estado inicial da animação*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /*esse botão é um inline-element porque é texto mas devemos exibilo como inline-block, se tirar esse código você vai ver que o botão cobre um pouco do texto porque é um inline-element, sempre devemos fazer isso se quisermos adicionar padding, height, width nos elementos*/
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .55s;
+    /*todas propriedades estão ativadas para serem animadas*/
+    /*para colocar o botão no centro, editamos o .text-box, que é a div, e colocamos um text-align: center no .text-box, ele é um elemento inline-block (bloco embutido), então, é tratado como texto, então se é texto é só colocar text-align*/
+    position: relative;
+    /*para o botão btn-white::after para inserir ele atras*/
+    font-size: 1.6rem; }
+  .btn:hover {
+    /*mover para cima ao hover*/
+    transform: translateY(-3px);
+    /*move o botão para cima um pouco*/
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.945);
+    /*direção x, direção y, blur*/
+    /*estilo só vai ser aplicado quando hover o botão, queremos que o elemento cresça, grow*/ }
+    .btn:hover::after {
+      /*crescer, scaleX direction, se deixar só */
+      transform: scaleX(1.5) scaleY(1.6);
+      /*ele cresce normal e já fica invísivel(para causar o efeito), altere o opacity para 0.2 e entenda quando vc houver no botão fica pouco vísivel, 0 fica invísivel*/
+      opacity: 0.0; }
+  .btn:active {
+    /*mover para cima ao hover*/
+    transform: translateY(-1px);
+    /*move o botão para baixo ao clicar nele*/
+    box-shadow: 0 5rem 1rem rgba(0, 0, 0, 0.5); }
+  .btn--white {
+    background-color: white;
+    color: #777; }
+    .btn--white::after {
+      background-color: white; }
+  .btn::after {
+    /*tem que ter sempre um content, se nao nao aparece nada, precisa ter display tambem*/
+    content: "";
+    display: inline-block;
+    /*o botao que temos é um inline-block, estamos colocando igual*/
+    /*extamente igual ao nosso botão, é tratado como um child do botão, significa 100% da largura do botão*/
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /*queremos que seja de cor branca tambem, mas é melhor o btn-white para colcoar cor*/
+    /*para colocar o botão atrás e nao fazer parte do elemento, precisamos colocar position absolute*/
+    position: absolute;
+    /*posição absolute precisa ter uma referência, vir de um relative de algum lugar*/
+    top: 0;
+    left: 0;
+    /*z-index define posição dos elementos se eles tiver um em cima do outro, -1(atrás)*/
+    z-index: -1;
+    /*habilitar animação*/
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /*nome, duração, efeito e delay*/
+    /*esconder o botão para depois exibir o botão e animação, preenchimento de animação. Sem esse código o botão fica vísivel primeiro e depois começa a animação, queremos esconder ele */
+    /*pega o código inicial do keyframe MoveInBottom(opacity to 0* e transform: translateY(); vão ser aplicados antes da animação começar*/
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #7ed56f;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #7ed56f;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #7ed56f;
+  color: white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.7rem); }
+
+.btn-text:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.card {
+  -moz-perspective: 150rem;
+  perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .card__side {
+    height: 52rem;
+    font-size: 5rem;
+    transition: all .9s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.5); }
+    .card__side--front {
+      background-color: white; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
+  .card__picture {
+    height: 23rem;
+    background-size: cover;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: url(../img/nat-5.jpg); }
+    .card__picture--3 {
+      background-image: url(../img/nat-5.jpg); }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    top: 12rem;
+    right: 4rem;
+    text-align: right;
+    width: 70%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: solid 1px #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: traslate(-50%, -50%);
+    color: white; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    /*colocar elemento em cima do outro*/
+    position: absolute;
+    z-index: 1;
+    transition: all .2s;
+    outline-offset: 1.5rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #7ed56f;
+      transform: scale(1.1) translateY(-3rem);
+      box-shadow: 0 5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 2; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.98); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  transition: transform .2s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    background-image: linear-gradient(to right, #55c57a, #28b485);
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.header {
+  height: 95vh;
+  /*95% do viewport*/
+  /*linear gradiente, pode especificar a posicao onde começa e termina(to right bottom, começa no topo esqerd e vai ate embaixo, tipo diagonal)*/
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /*responsivo, a imagem sempre tenta preencher toda tela conforme diminui ou aumenta tela*/
+  background-position: top;
+  /*o topo da imagem sempre irá permanecer no container, fazer o teste, conforme aumenta ou diminui o browser diminui a tela*/
+  /*cortar imagem em formas diferentes clip the image
+    vh -> view port porcentagem do que aparece na tela
+    https://bennettfeely.com/clippy/
+    */
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /*div ontem tem a imagem do logo topo esquerdo*/
+  /*o logo em si, a imagem*/
+  /*div que tem o h1 e botão*/ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    /*não é mais 40px;*/
+    left: 4rem;
+    /*não é mais 40px*/ }
+  .header__logo {
+    height: 3.5rem;
+    /*não é mais 35px*/
+    /*o width é identificado automaticamente pelo browser, se tivesse width seria a mesma coisa, height identificado automaticamente pelo browser*/ }
+  .header__text-box {
+    position: absolute;
+    /*o pai desse, vc está definindo para ser 50% do pai desse elemento(header)
+        é em relação ao elemento pai */
+    top: 40%;
+    left: 50%;
+    /*transformar o elemento para ele ficar no centro mesmo, onde a gente quer, transformar x e y = esses 50% não estão mais com relação ao elemento pai e sim ao próprio elemento. Então -50% será deslocada metade da largura para o lado esquerdo*/
+    /*dessa forma agora, os textos ficam completamente no centro(50%, 50%) mas como cortamos a imagem em baixo fica um pouco estranho nao parece mt no centro, entao diminuimos o top acima para 40%*/
+    transform: translate(-50%, -50%);
+    /*para colocar o botão no centro, devemos editar aqui, todo texto que está dentro da box, fica no centro*/
+    text-align: center; }
+
+.row {
+  max-width: 1140px;
+  max-width: 114rem;
+  /*max-width = Se tiver espaço disponível entao vai ter 1140px(114rem) mas se nao tiver largura suficiente(se o viewport for menor que 114rem) vai simplesmente preecnher 100% do espaço disponível */
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 5rem; }
+  .row .col-1-of-2 {
+    width: calc( (100% - 5rem) /2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 5rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 5rem) / 3) + 5rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 5rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 5rem) / 4) + 5rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 5rem) / 4) + 2 * 5rem); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  /*linear gradiente, pode especificar a posicao onde começa e termina(to right bottom, começa no topo esqerd e vai ate embaixo, tipo diagonal)*/
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem; }
+  .section-features > * {
+    transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem; }

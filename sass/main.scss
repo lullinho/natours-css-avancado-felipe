@@ -1,0 +1,39 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+
+@import "base/animations";
+@import "base/base";//universal, classe html, body , *
+@import "base/typography";//classes dos headings, <p> dos paragraphs..
+@import "base/utilities";//utilidades para usar em elementos, tipo, classe para centralizar texto, classe para colocar margem no final, tipo, média, pequena, etc..
+
+
+@import "components/button";  //os botões 
+@import "components/card";
+@import "components/composition"; //div composition onde tem 3 imagens dentro
+@import "components/feature-box"; //div onde tem as 4 boxes dentro, 4 colunas com imagens+
+
+@import "layouts/header";
+@import "layouts/grid";
+
+@import "pages/home";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

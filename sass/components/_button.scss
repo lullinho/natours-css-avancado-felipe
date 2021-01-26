@@ -1,0 +1,118 @@
+.btn{
+    /*pseudo-classe, pseudo-classe do link, (pseudo-classes são estados especiais de um selector), o link é um estado do seletor de botão*/
+
+    /*quando é um elemento ancor/link
+    visited: quando usuário já clicou no botão antes e o vê novamente, queremos que o visited state fique igual ao estado normal de link , nao queremos que ao clicar e ver botao novamente tenha cor diferente cinza sla
+    1º */
+    &:link, &:visited{
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+
+        /*esse botão é um inline-element porque é texto mas devemos exibilo como inline-block, se tirar esse código você vai ver que o botão cobre um pouco do texto porque é um inline-element, sempre devemos fazer isso se quisermos adicionar padding, height, width nos elementos*/
+        display: inline-block;
+
+        border-radius: 10rem;
+        transition: all .55s; /*todas propriedades estão ativadas para serem animadas*/
+
+
+        /*para colocar o botão no centro, editamos o .text-box, que é a div, e colocamos um text-align: center no .text-box, ele é um elemento inline-block (bloco embutido), então, é tratado como texto, então se é texto é só colocar text-align*/
+
+
+        position: relative; /*para o botão btn-white::after para inserir ele atras*/
+        font-size: 1.6rem;
+
+    }
+
+    /*2º hover*/
+    &:hover{
+        /*mover para cima ao hover*/
+        transform: translateY(-3px);/*move o botão para cima um pouco*/
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.945); /*direção x, direção y, blur*/
+
+        /*estilo só vai ser aplicado quando hover o botão, queremos que o elemento cresça, grow*/
+        &::after{
+            /*crescer, scaleX direction, se deixar só */
+            transform: scaleX(1.5) scaleY(1.6);
+            /*ele cresce normal e já fica invísivel(para causar o efeito), altere o opacity para 0.2 e entenda quando vc houver no botão fica pouco vísivel, 0 fica invísivel*/
+            opacity: 0.0;
+        }
+    }
+
+    /*3º quando é clicado*/
+    &:active{
+        /*mover para cima ao hover*/
+        transform: translateY(-1px);/*move o botão para baixo ao clicar nele*/
+        box-shadow: 0 5rem 1rem rgba($color-black, 0.5);
+    }
+
+    &--white{
+        background-color:$color-white;
+        color:$color-gray-dark;
+
+        &::after{
+            background-color:$color-white;
+        }
+    }
+
+    /*pseudo elemento, o truque é adicionar um botão que se parece exatamente com o botão que já temos mas o colocamos atrás do botão e quando ficamos fora do hover esse pseudo elemento fica oculto volta para tras do botao Em CSS, ::after cria um pseudo-elemento que é o último filho do elemento selecionado. Muitas vezes é usado para adicionar e melhorar o conteúdo de um elemento como a propriedade content . É inline por padrão.*/
+    /*pseudo elements permite estilizar algumas partes dos elementos, after adiciona um elemento virutal após o elemento*/
+
+    /*estado inicial da animação*/
+    &::after{
+        /*tem que ter sempre um content, se nao nao aparece nada, precisa ter display tambem*/
+        content: "";
+        display: inline-block;/*o botao que temos é um inline-block, estamos colocando igual*/
+        /*extamente igual ao nosso botão, é tratado como um child do botão, significa 100% da largura do botão*/
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /*queremos que seja de cor branca tambem, mas é melhor o btn-white para colcoar cor*/
+        /*para colocar o botão atrás e nao fazer parte do elemento, precisamos colocar position absolute*/
+        position: absolute;/*posição absolute precisa ter uma referência, vir de um relative de algum lugar*/
+        top: 0;
+        left: 0;
+        /*z-index define posição dos elementos se eles tiver um em cima do outro, -1(atrás)*/
+        z-index: -1;
+        /*habilitar animação*/
+        transition: all .4s ;
+
+    }
+
+
+
+
+
+    &--animated{
+        
+        animation: moveInBottom .5s ease-out .75s; /*nome, duração, efeito e delay*/
+        /*esconder o botão para depois exibir o botão e animação, preenchimento de animação. Sem esse código o botão fica vísivel primeiro e depois começa a animação, queremos esconder ele */
+        /*pega o código inicial do keyframe MoveInBottom(opacity to 0* e transform: translateY(); vão ser aplicados antes da animação começar*/
+        
+        animation-fill-mode: backwards;
+    }
+
+}
+
+//button learn more, da section
+.btn-text{
+    &:link, &:visited{
+        font-size: $default-font-size;
+        color: $color-primary;
+        display:inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;//para ser animado em todo botao
+    }
+    &:hover{
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba(black, .15);
+        transform: translateY(-0.7rem);//mover para cima
+    }
+    &:active{
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}

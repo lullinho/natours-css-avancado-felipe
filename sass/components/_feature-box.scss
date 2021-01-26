@@ -1,0 +1,25 @@
+.feature-box{
+    background-color: rgba($color-white, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+    transition: transform .2s;
+    &__icon{
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        //colocando o fundo no texto, o fundo fica até o fim da tela, queremos que o elemento não ocupe 100% da largura, agora ele é um block-element por isso ocupa 100%
+        display: inline-block; // isso resolve o problema, agora o fundo só cobre o texto;
+        -webkit-background-clip: text;//para ter o efeito gradiente atrás do texto, o plano de fundo é cortado exatamente onde o texto está , vai cortar(clip) o fundo para onde o texto está
+        //sem esse codigo abaixo, voce ve o texto que fica acima do clip background 
+        color: transparent; //nós queremos ver o background-image e nao o texto, agora temos a background-image apenas onde o texto esta e acima disso temos o texto, entao colocamos o texto transparente para ver o background-image
+    }
+
+    &:hover{
+        transform: translateY(-1.5rem) scale(1.03); //mover para cima e o scale aumenta o tamanho um pco
+    }
+
+
+}

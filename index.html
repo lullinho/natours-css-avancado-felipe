@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="css/icons-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        
+        <title>Natours | Exciting tours for adventurous people</title>
+    </head>
+    <body>
+        <!--
+
+            NUNCA TOCAR NA COLUNA, nao adicionar classes ou modificar, melhor é adicionar outra div dentro da coluna
+
+        -->
+        <!--BEM: APLICANDO BEM - Identificar o primeiro BLOCO(BLOCK), componente que é significativo por si só, não depende de outros elementos., o primeiro é o header-->
+        <!--HEADER: TOPO-->
+
+        <!-- BEM: header é um bloco no sistema BEM-->
+        <!---->
+        <header class="header">
+
+            <!--container para a imagem (logo-box)-->
+            <!--BEM: esse logo-box só existe dentro header, então ele é um ELEMENTO(element) 
+                Para separar um bloco de um elemento , adicionar __
+            -->
+            <div class="header__logo-box">
+                <!--a imagem em si (logo)-->
+                <img src="img/logo-white.png" alt="Logo" class="header__logo">
+            </div>
+
+            <!-- BEM: text-box é uma parte do header também, adicionar header__-->
+            <div class="header__text-box">
+                <!--H1 é o mais importante, então divida todo o texto importante da maneira que você deseja, um embaixo do outro e tamanhos diferentes, melhor fazer assim do que dividir e colocar um h2, pois h1 é o mais importante -->
+
+                <!--BEM: esse heading-primary pode ser um bloco por si só, podemos usar ele separadamente em outra página etc, faria sentido.. então é um STANDALONE BLOCK-->
+                <h1 class="heading-primary">
+                <!--SPAN perfeito para isso, span serve só para editar algum texto diferente, adicionar uma classe, só isso 
+                 (heading-primary-main e heading-primary-sub)-->
+                    
+                    <!--BEM: esses são modificadores do heading-primary, para separar um bloco do modificador só adicionar --   -->
+                    <span class="heading-primary--main">MARKETING</span>
+                    <span class="heading-primary--sub">is where life happens</span>
+                </h1>
+
+                <!--botão do header-->
+                <!--BEM: botão é um bloco standalone, e os outros são modificadores, adicionar -- -->
+                <a href="#" class="btn btn--white btn--animated">Discover our tours</a>
+            </div>    
+        </header>
+
+        <!--HTML 5 para os motores de busca, parte principal do site <main>, pages/_home.scss -->
+        <main>
+            <section class="section-about">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Exciting tours for adventurous people
+                    </h2>
+                </div>
+                <!--agora vem duas colunas para imagens ao lado
+                -->
+                <div class="row">
+                    <div class="col-1-of-2">
+
+                        <h3 class="heading-tertiary  u-margin-bottom-small">Youre going to fall in love with nature</h3>
+                        <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus facere quaerat sunt modi vitae, nulla fugiat et quas impedit? Blanditiis laudantium quia assumenda nesciunt adipisci voluptates explicabo itaque quo!</p>
+
+                        <h3 class="heading-tertiary u-margin-bottom-small">Live adventures like you never have before</h3>
+                        <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium earum harum aliquam nostrum! In mollitia ab magnam. Aspernatur inventore repudiandae quaerat sit. Similique dolor corrupti suscipit aperiam dolores cumque architecto?</p>
+
+                        <a href="#" class="btn-text">Learn More &rarr;</a>
+
+
+                    </div>
+                
+                    <div class="col-1-of-2">
+                        <!--  .composition>img.composition__photo.composition__photo--p1*3  -->
+                            <div class="composition">
+                                <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                                <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
+                                <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <section class="section-features">
+                
+
+
+                <div class="row"><!--filho direto do section-feautures-->
+
+
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box__icon icon-basic-world"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">Explore the world</h3>
+                            <p class="feature-box__text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque at dicta debitis veritatis nobis quisquam tenetur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box__icon icon-basic-compass"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">Meet nature</h3>
+                            <p class="feature-box__text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque at dicta debitis veritatis nobis quisquam tenetur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box__icon icon-basic-map"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">Find your way</h3>
+                            <p class="feature-box__text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque at dicta debitis veritatis nobis quisquam tenetur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box__icon icon-basic-heart"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">Healthier life</h3>
+                            <p class="feature-box__text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque at dicta debitis veritatis nobis quisquam tenetur.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+               
+
+
+            </section>
+
+            <section class="section-tours">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Most popular tours!
+                    </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-1-of-3">
+                        <!--criando uma div para o cartão-->
+                        <div class="card">
+                            <div class="card__side card__side--front">
+                                <!--não colocamos card__side card__side--front porque é os elementos abaixo são considerados novos elementos independetes que teoricamente não dependem do card__side-->
+                                <div class="card__picture card__picture--1">
+                                    &nbsp;<!--significa um espaço vazio-->
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--1">The Sea Explorer</span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>3 days tours</li>
+                                        <li>Up to 30 people</li>
+                                        <li>2 tour guides</li>
+                                        <li>Sleep in cozy hotels</li>
+                                        <li>Difficulty: easy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-1">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">Only</p>
+                                        <div class="card__price-value">$297</div>
+                                    </div>
+                                    <a href="#" class="btn btn--white">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-of-3">
+                        Col 1 of 3
+                    </div>
+                    <div class="col-1-of-3">
+                        Col 1 of 3
+                    </div>
+                </div>
+
+
+
+
+            </section>
+           
+
+
+
+        </main>
+
+        <section class="grid-test">
+            <!--primeira linha-->
+            <div class="row">
+                <div class="col-1-of-2">
+                    Col 1 of 2
+                </div>
+                <div class="col-1-of-2">
+                        Col 1 of 2
+                </div>
+            </div>
+            <!--segunda linha-->
+            <div class="row">
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+            </div>
+            <!--tericeira linha-->
+            <div class="row">
+                <!--uma parte das 3 partes da coluna-->
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <!--esse é duas partes das 3 partes da coluna-->
+                <div class="col-2-of-3">
+                    Col 2 of 3
+                </div>
+            </div>
+            <!--quarta linha-->
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+            </div>
+            <!--quinta linha-->
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-2-of-4">
+                    Col 2 of 4
+                </div>
+            </div>
+            <!--sexta linha-->
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-3-of-4">
+                    Col 3 of 4
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+        
+    </body>
+</html>

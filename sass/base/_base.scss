@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /*usar o código abaixo para forçar uma herença, sempre que podemos, devemos usar a herença em vez de usar o seletor universal a propriedade box-sizing por si só não é herdada não é inherit definimos a propriedade de box-sizing(caixa) em cada elemento para inherit, para ser herdada, ao fazer isso ela herda tudo que for colocado ali no border-box do body, ´[e uma boa prática pois torna mais fácil mudar tamanho do box-sizing , a caixa como em plugins o outro componentes onde podemos querer usar propriedade diferente para o dimensionamento da caixa*/
+    box-sizing: inherit;
+
+    
+    
+}
+
+/*root font-size, definir o root para poder definir os rem
+estamos definindo uma global font-size , é uma boa técnica, 
+A UNIDADE 'REM' está sempre em relação ao tamanho da font-size raiz(root), então se mudarmos a font-size do html, podemos mudar todas as outras unidades pra rem, assim tudo é alterado alterando somente o font-size do html, cool.
+*/
+html{
+    //isso define o que 1 rem é; uma definição global para todo site
+    font-size: 62.5%; /*por que 10px? pra tornar nossa vida mais fácil porque agora sabemos que 1 rem = 10px;  agora basta dividir todos pixels por 10 e temos nosso rem.
+    */
+    /*o certo é não ter nada em px, então trocamos o 10px; para 66¨%;
+    quando colocamos pixel substituimos a configuração do tamanho da fonte do navegador que o usuário muda manulamente nas config do browser, (alguns tem problema de visao e aumentam a letra) ao usarmos pixel o usuario faz a mudança e não tem efeito. 
+    O tamanho padrão do navegador é 16px; então vamos usar % para definir o valor para 10px;
+    então 10/16 = 0.625
+    */
+
+}
+
+body{
+    /*tirou o border-box do *{} e colocou no body */
+    box-sizing: border-box;/*as bordas e os paddings nao sejam mais adicionados a largura total ou altura total especifica para a caixa. Sem isso, quaisquer preenchimentos(paddings) e bordas(border) são adicionados a altura/largura de um elemento, o que não é útil; 
+    https://www.maujor.com/tutorial/propriedade-css-box-sizing.php#:~:text=As%20CSS3%20criaram%20a%20propriedade,box%20criado%20pelo%20elemento%20HTML.
+    */
+}

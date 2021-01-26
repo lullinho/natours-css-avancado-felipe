@@ -1,0 +1,143 @@
+.card{
+    -moz-perspective: 150rem;//para funcionar no firefox
+    //perspectiva, tem que colocar um valor bem alto, se colocar valor baixo o efeito fica bem louco
+    perspective: 150rem;
+    
+    position: relative;
+    height: 52rem; // é um fix, pois a altura do cartão fica 0, todos elementos estão com position absolute então foram retirados do seu natural float, e qdo isso acontece, o elemento pai perde a altura(height), o elemento pai dos elementos abaixo que estão como absolute, é esse cartão aqui(.card)
+
+    &__side{
+        height: 52rem;
+        font-size: 5rem;
+        transition: all .9s ease;//dar alguma animação, ease serve para deixar mais suave
+
+        position: absolute; //para colocar o cartão da frente em cima do cartão de trás, relativo ao cartão(.card)
+        //queremos que comece do 0 
+        top: 0;
+        left: 0;
+        width: 100%;//para arrumar o espaço que sobra entre eles(quando eles ficam um em cima do outro fica um espaço por causa do texto, se um texto é maior que o outro, sai um pco pra fora
+        backface-visibility: hidden;//esconde a parte de trás de um elemento, não vamos ver o que está atrás, se deixar sem vai da pra ver o texto que esta no cartao da frente quando gira
+        border-radius: 5px;
+        overflow: hidden; //a imagem estava overflowing the parent, estava por cima desses cantos arredondados(border-radius)
+        box-shadow: 0 1.5rem 5rem rgba($color-black, .5);
+
+
+        &--front{
+            background-color: $color-white;
+            
+        }
+
+        &--back{
+            
+            //antes de hovered o cartão, essa parte de trás já está virada
+            transform: rotateY(180deg);//já está 180 graus no estado normal e quando houver move pra 0
+            &-1{
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+
+
+    }
+
+    //quando passarmos(hovered) o cartão queremos que o __side se transforme
+    &:hover &__side--front{//quando o cartão é hoverd, selecionamos o side e ai aplicamos o transform, faz sentido colocar o hover no main block, no cartão mesmo, quando colocar hover em todo cartão
+        transform: rotateY(-180deg); //só a parte da frente que roda 180 graus, pois a parte de tras(--back) já está 180 graus
+    }
+    //quando passarmos(hovered) o cartão queremos que o __side se transforme
+    &:hover &__side--back{//quando o cartão é hoverd, selecionamos o side e ai aplicamos o transform, faz sentido colocar o hover no main block, no cartão mesmo, quando colocar hover em todo cartão
+        transform: rotateY(0deg); //precisar voltar para 0 quando tiver um hover para rodar
+    }
+
+    //FRONT SIDE STYLING
+    &__picture{
+        height: 23rem;
+        background-size: cover;
+         //background blend modes - descreve como elementos, imagens de fundo devem se mesclar
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); //coordenadas que sempre começam no canto superior esquerdo
+
+        &--1{
+            //background blend modes - descreve como elementos, imagens de fundo devem se mesclar, queremos misturar cor e imagem
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+        &--2{
+            background-image: url(../img/nat-5.jpg);
+        }
+        &--3{
+            background-image: url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading{
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 4rem;
+        text-align: right;
+        width: 70%;
+    }
+
+    //isso não é um filho do heading, esse é um novo elemento heading span, por isso nao colocamos ele dentro do de cima, não é um modificador do heading, nem um elemento do heading, é novo elemento
+    &__heading-span{
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone; //vai tratar o heading (The Sea) como uma linha e o Explorer como outra linha, dessa forma vai aplicar o padding nas duas linhas, tratando eles como textos diferentes. Se tirar esse código repare que o padding só adionado na no inicio e no fim da palavra inteira 'the sea explorer'
+        box-decoration-break: clone;
+        &--1{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-secondary-light, .85), 
+            rgba($color-secondary-dark, .85));
+        }
+
+    }
+
+    &__details{
+        //adicionar um espçao no começo da lista
+        padding:3rem;
+        ul{//queremos esse ul centralizado no container
+            list-style: none;
+            width: 80%;
+            //queremos centralizar um block element dentro de um block element, mais simples é usar a técnica margin 0 auto para centralizar
+            margin: 0 auto; 
+
+
+            li{
+                text-align: center;
+                font-size:1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child){
+                    border-bottom: solid 1px $color-grey-light-2;
+                }
+            }
+
+        }
+    }
+
+    //BACK SIDE STYLING
+    &__cta{
+        position: absolute;
+        //centralizar
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: traslate(-50%,-50%);
+        color: $color-white;
+    }
+
+    &__price-box{
+
+    }
+    &__price-only{
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+    &__price-value{
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+}

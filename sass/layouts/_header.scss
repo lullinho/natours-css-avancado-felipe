@@ -1,0 +1,45 @@
+.header{
+    height: 95vh;/*95% do viewport*/
+    /*linear gradiente, pode especificar a posicao onde começa e termina(to right bottom, começa no topo esqerd e vai ate embaixo, tipo diagonal)*/
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), //so no sass que funciona assim, colocando variavel e opacidade
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero.jpg);
+
+    background-size: cover;/*responsivo, a imagem sempre tenta preencher toda tela conforme diminui ou aumenta tela*/
+    background-position: top;/*o topo da imagem sempre irá permanecer no container, fazer o teste, conforme aumenta ou diminui o browser diminui a tela*/
+    /*cortar imagem em formas diferentes clip the image
+    vh -> view port porcentagem do que aparece na tela
+    https://bennettfeely.com/clippy/
+    */
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /*div ontem tem a imagem do logo topo esquerdo*/
+    &__logo-box{
+        position: absolute;
+        top: 4rem;/*não é mais 40px;*/
+        left: 4rem; /*não é mais 40px*/
+    }
+    /*o logo em si, a imagem*/
+    &__logo{
+    height: 3.5rem;/*não é mais 35px*/ /*o width é identificado automaticamente pelo browser, se tivesse width seria a mesma coisa, height identificado automaticamente pelo browser*/
+    }
+
+    /*div que tem o h1 e botão*/
+    &__text-box{
+        position: absolute;
+        /*o pai desse, vc está definindo para ser 50% do pai desse elemento(header)
+        é em relação ao elemento pai */
+        top: 40%;
+        left: 50%;
+        /*transformar o elemento para ele ficar no centro mesmo, onde a gente quer, transformar x e y = esses 50% não estão mais com relação ao elemento pai e sim ao próprio elemento. Então -50% será deslocada metade da largura para o lado esquerdo*/
+        /*dessa forma agora, os textos ficam completamente no centro(50%, 50%) mas como cortamos a imagem em baixo fica um pouco estranho nao parece mt no centro, entao diminuimos o top acima para 40%*/
+        transform: translate(-50%, -50%);
+
+        /*para colocar o botão no centro, devemos editar aqui, todo texto que está dentro da box, fica no centro*/
+        text-align: center;
+    }
+
+}

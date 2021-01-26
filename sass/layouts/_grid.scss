@@ -1,0 +1,68 @@
+.row{
+    //primeiro definir uma largura para a linha
+    max-width: 1140px;//padrão hoje é 1140px , nunca usar pixels, converter para rem
+    //sabemos que 10 pixels é 1 rem, então basta dividir, difinimos no body para o pixel padrão ser 10 pixels(62,5%)
+    max-width: $grid-width; //114rem;
+    /*max-width = Se tiver espaço disponível entao vai ter 1140px(114rem) mas se nao tiver largura suficiente(se o viewport for menor que 114rem) vai simplesmente preecnher 100% do espaço disponível */
+   // background-color: #eee;
+
+    //Queremos sempre centralizar a linha no viewport
+    margin: 0 auto; //truque para centralizar block elements dentro de outro block element(elemento de bloco) dizendo que a margem no top e bottom é 0 e na direita&esquerda é auto; Funciona porque o auto significa que o browser ao renderizar a página vai descobrir a margem que queremos na esuqerda/direita
+
+    //não faz sentido ter uma margin-bottom no final, na ultima linha
+    //seleciona tudo, exceto o ultimo filho, exceto a ultima linha
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+    @include clearfix;//mixin clearfix
+        //selecionar todas as colunas ao mesmo tempo e aplicar os estilos que são iguais, em vez de criar um mixin, ou de repetir código.
+    //Poderiamos adicionar uma nova classe em todas as colunas, tipo col em todas colunas no html, 
+    //Mas podemos fazer abaixo: selecionar atributos, podemos selecionar src, atributo da imagem, selecionar qualquer coisa.
+    //[alt="Logo"]{} ->todos elementos que tem alt=logo
+    //é um atributte selector, seletor de atributos
+    [class^="col-"]{ //seleciona todos elementos que começam com a classe col-
+        // ^   (que começam com) |  *   (que contém ...) | $    (que termina com...)
+       // background-color: orange;
+        float: left; // float as colunas para o lado esquerdo; 
+
+        //o gutter só tem em uma coluna neste caso, na primeira somente, queremos a margem em todas colunas, menos na última, para não adicionar margem na direita da ultima coluna
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    //1ª coluna, é toda a largura(100%) - gutter(espaço entre colunas) / 2
+    .col-1-of-2{
+        //pode calcular com diferentes unidades ,o que é muito legal, pode mixar pixels com % etc (no css tradicional nao da)
+        //se quiser colocar variável dentro da calc, precisa colocar a variavel entre #{}
+        width: calc( (100% - #{$gutter-horizontal}) /2 );    
+    }
+    //Cálculo é feito: temos 100% e dois gutter e dividir por 3, pois temos 3 colunas
+    .col-1-of-3{
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+
+    }
+    .col-2-of-3{
+        //cálculo: dessa vez temos 3 gutter e 4 colunas (basta dividir pelo numero de colunas e adicionar substrair gutter do 100%) 
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+
+    }
+    .col-1-of-4{
+       // 
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+
+    }
+    .col-2-of-4{
+        // 
+         width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+ 
+     }
+     .col-3-of-4{
+        // 
+        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+ 
+     }
+
+
+
+}

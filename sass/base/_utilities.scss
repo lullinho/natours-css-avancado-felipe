@@ -1,0 +1,17 @@
+/*nome do conceito é utilities classes, são classes css que tem um objetivo básico só, tipo, centralizar tudo*/
+.u-center-text{
+    //o h2 é um inline-block element, então definindo o pai dele para text-align center, então esse inline-block element que está dentro, será tratado como texto e então será centralizado
+    text-align: center;
+}
+
+.u-margin-bottom-big{
+    margin-bottom: 8rem; //tá no h1
+}
+
+.u-margin-bottom-medium{
+    margin-bottom: 4rem;
+}
+
+.u-margin-bottom-small{
+    margin-bottom: 1rem;
+}
