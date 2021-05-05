@@ -13,7 +13,7 @@
         display: inline-block;
 
         border-radius: 10rem;
-        transition: all .55s; /*todas propriedades estão ativadas para serem animadas*/
+        transition: all .4s; /* todas propriedades estão ativadas para serem animadas, o transition all deve estar sempre no initial state, que é aqui, mas queremos animar o btn:hover::after exemplo */
 
 
         /*para colocar o botão no centro, editamos o .text-box, que é a div, e colocamos um text-align: center no .text-box, ele é um elemento inline-block (bloco embutido), então, é tratado como texto, então se é texto é só colocar text-align*/
@@ -54,7 +54,7 @@
             background-color:$color-white;
         }
     }
-
+    //::After adiciona um elemento virtual logo após o elemento que selecionamos
     /*pseudo elemento, o truque é adicionar um botão que se parece exatamente com o botão que já temos mas o colocamos atrás do botão e quando ficamos fora do hover esse pseudo elemento fica oculto volta para tras do botao Em CSS, ::after cria um pseudo-elemento que é o último filho do elemento selecionado. Muitas vezes é usado para adicionar e melhorar o conteúdo de um elemento como a propriedade content . É inline por padrão.*/
     /*pseudo elements permite estilizar algumas partes dos elementos, after adiciona um elemento virutal após o elemento*/
 
@@ -63,16 +63,16 @@
         /*tem que ter sempre um content, se nao nao aparece nada, precisa ter display tambem*/
         content: "";
         display: inline-block;/*o botao que temos é um inline-block, estamos colocando igual*/
-        /*extamente igual ao nosso botão, é tratado como um child do botão, significa 100% da largura do botão*/
+        /*extamente igual ao nosso botão, é tratado como um child do botão, significa 100% da largura do botão original*/
         height: 100%;
         width: 100%;
         border-radius: 10rem;
         /*queremos que seja de cor branca tambem, mas é melhor o btn-white para colcoar cor*/
         /*para colocar o botão atrás e nao fazer parte do elemento, precisamos colocar position absolute*/
-        position: absolute;/*posição absolute precisa ter uma referência, vir de um relative de algum lugar*/
+        position: absolute;/*posição absolute precisa ter uma referência, vir de um relative de algum lugar, vem do primeiro relative que encontrar, precisa ser do botão original*/
         top: 0;
         left: 0;
-        /*z-index define posição dos elementos se eles tiver um em cima do outro, -1(atrás)*/
+        /*z-index define posição dos elementos se eles tiver um em cima do outro, -1(atrás) do botão*/
         z-index: -1;
         /*habilitar animação*/
         transition: all .4s ;
@@ -89,7 +89,9 @@
         /*esconder o botão para depois exibir o botão e animação, preenchimento de animação. Sem esse código o botão fica vísivel primeiro e depois começa a animação, queremos esconder ele */
         /*pega o código inicial do keyframe MoveInBottom(opacity to 0* e transform: translateY(); vão ser aplicados antes da animação começar*/
         
-        animation-fill-mode: backwards;
+        //automaticamente aplica os estilos para 0% antes da animação começar
+        // os estilos que estão na animação 'moveInBottom' não vão ser aplicados
+        animation-fill-mode: backwards; // botão fica invísivel ao carregar página
     }
 
 }
